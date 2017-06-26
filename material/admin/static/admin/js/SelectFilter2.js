@@ -134,6 +134,14 @@ window.SelectFilter = {
         }
         return true;
     }
-}
+};
+
+addEvent(window, 'load', function(e) {
+    $('select.selectfilter, select.selectfilterstacked').each(function() {
+        var $el = $(this),
+            data = $el.data();
+        SelectFilter.init($el.attr('id'), data.fieldName, parseInt(data.isStacked, 10));
+    });
+});
 
 })(django.jQuery);
